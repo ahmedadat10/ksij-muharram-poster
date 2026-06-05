@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSIJ Poster Editor - Kampala Uganda</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-content">
+    <h1>🕌 KSIJ Poster Editor</h1>
+    <div class="top-bar-actions">
+      <button class="btn btn-secondary" onclick="loadTemplate()">📄 Load Template</button>
+      <button class="btn btn-primary" onclick="downloadPNG()">📥 Download PNG</button>
+    </div>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <h3>📅 Auto-Fill Week Dates</h3>
+      <p class="helper-text">Pick the Monday of the week. The day names and Gregorian dates fill in automatically.</p>
+      <input type="date" id="weekStartDate" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;margin-bottom:8px;font-size:14px;">
+      <button class="btn btn-block btn-primary" onclick="autoFillWeek()">Fill Dates</button>
+      <p class="helper-text" style="margin-top:8px;font-size:11px;opacity:0.8;">Note: Hijri (Islamic) dates still need to be typed manually, since they depend on local moon sighting.</p>
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>🎨 Quick Actions</h3>
+      <button class="btn btn-block btn-primary" onclick="downloadPNG()">Download PNG</button>
+      <button class="btn btn-block btn-secondary" onclick="loadTemplate()">Load New Template</button>
+      <button class="btn btn-block btn-secondary" onclick="resetAll()">Reset All</button>
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>💡 How to Use</h3>
+      <ol class="instructions-list">
+        <li><strong>Click any text</strong> to edit it</li>
+        <li><strong>Drag days</strong> to reorder them (grab and move)</li>
+        <li>Click <strong>+ Add Prayer Row</strong> to add more prayers</li>
+        <li>Click <strong>+ Add Programme</strong> to show event details</li>
+        <li>Click <strong>+ Add Notice</strong> to add notice boxes</li>
+        <li><strong>Right-click</strong> colored boxes to change themes</li>
+        <li>Click <strong>Download PNG</strong> when done!</li>
+      </ol>
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>🎨 Theme Helpers</h3>
+      <p class="helper-text">Right-click on any colored box to change theme:</p>
+      <div class="theme-examples">
+        <div class="theme-box theme-green">✅ Regular (Green)</div>
+        <div class="theme-box theme-black">⚫ Shahadat (Black)</div>
+        <div class="theme-box theme-red">🔴 Wiladat (Red)</div>
+      </div>
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>↕️ Reorder Days</h3>
+      <p class="helper-text">Click and drag any day section to move it up or down. Perfect for rearranging the week!</p>
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>ℹ️ About</h3>
+      <p class="helper-text">KSIJ Kampala Weekly Programme Poster Editor. Create beautiful posters in seconds!</p>
+    </div>
+  </div>
+  
+  <div class="editor-area">
+    <div class="editor-wrapper" id="editorWrapper">
+      <!-- Poster loads here via JavaScript -->
+    </div>
+  </div>
+</div>
+
+<div id="contextMenu" class="context-menu" style="display: none;">
+  <div class="context-item" onclick="changeTheme('regular')">🟢 Regular Theme</div>
+  <div class="context-item" onclick="changeTheme('shahadat')">⚫ Shahadat Theme</div>
+  <div class="context-item" onclick="changeTheme('wiladat')">🔴 Wiladat Theme</div>
+</div>
+
+<script src="poster-template.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
